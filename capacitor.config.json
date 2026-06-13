@@ -1,0 +1,16 @@
+{
+  "appId": "com.jobnow.app",
+  "appName": "JobNow",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://jobnow.dailywage.workers.dev",
+    "cleartext": true
+  },
+  "android": {
+    "appendUserAgent": "JobNowMobileApp"
+  },
+  "ios": {
+    "appendUserAgent": "JobNowMobileApp"
+  }
+}
