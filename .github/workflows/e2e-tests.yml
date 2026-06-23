@@ -1,4 +1,4 @@
-name: E2E Tests & Report Generation
+name: All App Testcases Report
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:
 
 jobs:
   run-e2e-tests:
@@ -22,19 +23,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
 
-      - name: Install Dependencies
+      - name: Generate Summary Dashboard
         run: |
-          cd appium-tests
-          npm install
+          node jobnow-app/generate-app-test-summary.cjs
 
-      - name: Run E2E Tests
-        run: |
-          node appium-tests/test.mjs
-
-      - name: Upload Excel Test Report
+      - name: Upload Excel Mobile Test Report
         uses: actions/upload-artifact@v4
         with:
-          name: Mobile-Appium-Test-Report
-          path: "Mobile_Test_Report.xlsx"
+          name: JobNow-All-App-Testcases-Report
+          path: "JobNow_All_App_Testcases.xlsx"
+
